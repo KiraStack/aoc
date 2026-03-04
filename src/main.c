@@ -32,14 +32,13 @@ int main(int argc, char *argv[])
 	}
 
 	/* Construct the compile command */
-	sprintf(command, "gcc -std=c89 -Wall -Isrc/utils src/%d/day%02d.c -o target/program.out && target/program.out", year, day);
+	sprintf(command, "gcc -std=c89 -Wall -Isrc/utils src/%d/day%02d.c -o target/a.out && target/a.out", year, day);
 	printf("Running: %s\n", command);
 
 	/* Execute the command */
-	int ret = system(command);
-	if (ret != 0)
+	if (system(command) != 0)
 	{
-		fprintf(stderr, "Error! Command failed with exit code %d\n", ret);
+		fprintf(stderr, "An error occurred while running the command.\n");
 		return 1;
 	}
 
