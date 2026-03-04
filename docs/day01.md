@@ -10,5 +10,6 @@ Brief description of the problem or link to the challenge:
 Instructions for running the solution locally:
 
 ```bash
-gcc src/[year]/day[x].c -o day[x].out
+gcc src/[year]/day[x].c -o target/day[x].out
+target/day[x].out
 ```

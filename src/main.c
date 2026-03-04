@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 	}
 
 	/* Construct the compile command */
-	snprintf(command, sizeof(command), "gcc -Isrc/utils src/%d/day%02d.c -o target/program.out && target/program.out", year, day);
+	sprintf(command, "gcc -std=c89 -Wall -Isrc/utils src/%d/day%02d.c -o target/program.out && target/program.out", year, day);
 	printf("Running: %s\n", command);
 
 	/* Execute the command */

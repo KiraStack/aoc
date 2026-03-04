@@ -7,6 +7,7 @@
 #define RESET "\x1b[0m"
 #define BOLD "\x1b[1m"
 #define RED "\x1b[31m"
+#define MAGENTA "\x1b[35m"
 #define GREEN "\x1b[32m"
 #define YELLOW "\x1b[33m"
 #define BLUE "\x1b[94m"
