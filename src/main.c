@@ -7,7 +7,7 @@
 /* Headers */
 #include <stdio.h>
 #include <stdlib.h>
-#include "./utils/ansi.h"
+#include "utils/ansi.h"
 
 /* Program entry */
 int main(int argc, char *argv[])
@@ -32,14 +32,14 @@ int main(int argc, char *argv[])
 	}
 
 	/* Construct the compile command */
-	snprintf(command, sizeof(command), "gcc -I./src/utils ./src/%d/day%02d.c -o ./target/a.out && ./target/a.out", year, day);
+	snprintf(command, sizeof(command), "gcc -Isrc/utils src/%d/day%02d.c -o target/program.out && target/program.out", year, day);
 	printf("Running: %s\n", command);
 
 	/* Execute the command */
 	int ret = system(command);
 	if (ret != 0)
 	{
-		fprintf(stderr, "Error compiling or running %d/day%02d solution.\n", year, day);
+		fprintf(stderr, "Error! Command failed with exit code %d\n", ret);
 		return 1;
 	}
 
