@@ -1,0 +1,15 @@
+{
+    // File settings
+    "files.eol": "\n",
+    "files.encoding": "utf8",
+    "files.trimFinalNewlines": true,
+    "files.insertFinalNewline": true,
+    "files.watcherExclude": {},
+
+    // Search settings
+    "search.exclude": {},
+
+    // Editor settings
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": false
+}
