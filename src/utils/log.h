@@ -8,44 +8,44 @@
 #include "ansi.h" /* used for ANSI color codes */
 
 /* Macros */
-#define log_trace(...) log_log(LOG_TRACE, __FILE__, __LINE__, __VA_ARGS__)
-#define log_debug(...) log_log(LOG_DEBUG, __FILE__, __LINE__, __VA_ARGS__)
 #define log_info(...) log_log(LOG_INFO, __FILE__, __LINE__, __VA_ARGS__)
 #define log_warn(...) log_log(LOG_WARN, __FILE__, __LINE__, __VA_ARGS__)
 #define log_error(...) log_log(LOG_ERROR, __FILE__, __LINE__, __VA_ARGS__)
-#define log_fatal(...) log_log(LOG_FATAL, __FILE__, __LINE__, __VA_ARGS__)
 
-/* Log levels */
+/**
+ * @brief Log levels.
+ * @details
+ * Logging levels are bitfields used to filter log messages by severity.
+ * Multiple levels can be combined using bitwise operations.
+ *
+ * Severity overview:
+ *  - INFO: general informational events
+ *  - WARN: something unexpected happened but recovery is possible
+ *  - ERROR: an unrecoverable error occurred
+ */
 typedef enum
 {
-	LOG_TRACE = 0,
-	LOG_DEBUG,
-	LOG_INFO,
-	LOG_WARN,
-	LOG_ERROR,
-	LOG_FATAL
+	LOG_INFO = 1 << 0,
+	LOG_WARN = 1 << 1,
+	LOG_ERROR = 1 << 2,
 } log_level_t;
 
 /* Global log level */
-static log_level_t global_log_level = LOG_TRACE; /* (default: LOG_TRACE) */
+static log_level_t global_log_level = LOG_INFO;
 
 /* ANSI color codes for log levels */
 static const char *level_colors[] = {
-	[LOG_TRACE] = WHITE,
-	[LOG_DEBUG] = BLUE,
 	[LOG_INFO] = GREEN,
 	[LOG_WARN] = YELLOW,
 	[LOG_ERROR] = RED,
-	[LOG_FATAL] = MAGENTA};
+};
 
 /* Log level names */
 static const char *level_names[] = {
-	[LOG_TRACE] = "TRACE",
-	[LOG_DEBUG] = "DEBUG",
 	[LOG_INFO] = "INFO",
 	[LOG_WARN] = "WARN",
 	[LOG_ERROR] = "ERROR",
-	[LOG_FATAL] = "FATAL"};
+};
 
 /**
  * Set the global log level.
@@ -83,7 +83,7 @@ void log_log(log_level_t level, const char *file, int line, const char *fmt, ...
 	char time_buf[9];
 	strftime(time_buf, sizeof(time_buf), "%H:%M:%S", tm_info);
 
-	/* Print log level, file, line, and message */
+	/* Write formatted output */
 	fprintf(stderr, "%s %s%s%s %s:%d: ", time_buf, level_colors[level], level_names[level], RESET, file, line);
 
 	/* Format user message */

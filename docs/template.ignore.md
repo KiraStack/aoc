@@ -1,6 +1,6 @@
 # Advent of Code - [Year] Day [X]
 
-## Challenge
+## Task
 
 Brief description of the problem or link to the challenge:
 [https://adventofcode.com/[year]/day/[x]](https://adventofcode.com/[year]/day/[x])
@@ -10,6 +10,9 @@ Brief description of the problem or link to the challenge:
 Instructions for running the solution locally:
 
 ```bash
-gcc src/[year]/day[x].c -o target/day[x].out
-target/day[x].out
+# Compile
+gcc src/[year]/day[x].c -o target/a.out
+
+# Run
+target/a.out
 ```
